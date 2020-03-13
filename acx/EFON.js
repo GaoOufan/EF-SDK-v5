@@ -35,6 +35,13 @@ function N64(v,a) {
 }
 _.F=function(n) { return new FF(n); }
 function FF(v) { var o=this; o.F=v.replace(/\+/g,'_'); o.toString=function () { return o.F.replace(/\_/g,'+'); } }
+function Cdec(v) {
+	var d=[0,0,0,0,0],i; for(i in d) d[i]=b64.indexOf(v[i]);
+	return [d[0]*4+(d[1]>>4),(d[1]&15)*16+(d[2]>>2),(d[2]&3)*64+d[3],d[4]*4];
+}
+function Cenc(c) {
+	return b64[c[0]>>2]+b64[(c[0]&3)*16+(c[1]>>4)]+b64[(c[1]&15)*4+(c[2]>>6)]+b64[c[2]&63]+b64[c[3]>>2];
+}
 _.ON=function(V,P) {
 	if(!_.xT(P)) {
 		var T=_.xT(V);
@@ -44,7 +51,7 @@ _.ON=function(V,P) {
 		else if(T=="D") T="7"+N64(Math.floor(V.getTime()/1000));
 		else if(T=="A") { T="1"+L64(V.length); for(var i in V) T+=_.ON(V[i]); }
 		else if(T=="S") T="3"+_.E64(V+"").replace(/\n/g,'').replace(/\r/g,'').replace(/\+/g,'_');
-		else if(T=="C") T="B"+V.EFON();
+		else if(T=="C") T="B"+Cenc(V.V);
 		else if(T=="I") T="C"+V.src.replace(/\n/g,'').replace(/\r/g,'').replace(/\+/g,'_').replace(/\;/g,'*');
 		else if(T=="N") {
 			V=V+""; var e=V.indexOf("e"),i;
@@ -70,7 +77,7 @@ _.ON=function(V,P) {
 			else if(T=="7") O=new Date(N64(O,1)*1000);
 			else if(T=="8") O=N64(O,1);
 			else if(T=="9") O=N64(O.substr(0,O.length-1),1)*Math.pow(10,N64(O.substr(-1),1));
-			else if(T=="B") O=new Color(O,2);
+			else if(T=="B") O=new Color(Cdec(O));
 			else if(T=="C") O=new Image().Set(O.replace(/\_/g,'+').replace(/\*/g,';'));
 			else { if(T!=="6") O=_.D64(O.replace(/\_/g,'+')); if(T=="4") O=parseFloat(O); }
 			P[0]+=L-1;
