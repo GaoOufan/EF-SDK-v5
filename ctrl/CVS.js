@@ -19,7 +19,7 @@ _.CTRL.CVS=function(f,p){
 	if(!p.d) _.xS(f,p.w||320,p.h||200); var u,z=f.cvs=_.xM("canvas",0,f,0,"FLD"),a=_.xV(f);
 	_.xB(f,"w",function(){ return z.width; },function(v){ z.width=v; });
 	_.xB(f,"h",function(){ return z.height; },function(v){ z.height=v; });
-	f.w=p.w||a.w; f.h=p.h||a.h; f.ctx=z.getContext("2d");
+	f.w=p.w||a.w; f.h=p.h||a.h; f.ctx=z.getContext("2d"); _.mR(f,p.rsx);
 	if(p.ce) _.Use("acx/Mouse",function(){
 		_.mC(z,iA.bind(this,1),2);
 		_.mT(z,function(e) { f.pd=1; p.ce(f,1,_.mP(e),e); });

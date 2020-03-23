@@ -18,7 +18,7 @@ _.Base.Add([
 ]);
 if(!_.Cfg.TRE) _.Cfg.TRE={};
 _.CTRL.TRE=function(f,p) {
-	var z=f.tre=_.xM("ul",0,f,["100%","100%"],"TRV"),j; f.className="FLD";
+	var z=f.tre=_.xM("ul",0,f,["100%","100%"],"TRV"),j; f.classList.add("FLD");
 	_.mR(f,p.rsx?1:0); f.stl=_.STL(['.TRV[kv] .TRM{}'],f); _.xB(f,"wrp",1,1);
 	_.xB(f,"kv",_.xW.bind(this,f.tre,"kv","~"),function(v){
 		_.xW(f.tre,"kv",v); f.stl.Rul(0,{width:v+"em"});
@@ -48,8 +48,7 @@ _.CTRL.TRE=function(f,p) {
 				if(g.bs) { _.xW(g.bs,"clp",v); g.ico.innerHTML=v?"Y":"X"; }
 			});
 			g.xs=c.xs; _.xE(g.ico,"click",function() { g.clp=g.clp?0:1; });
-			_.xE(g.txt,"click",iS.bind(this,g));
-			if(g.ke) _.xE(g.ke,"click",iS.bind(this,g));
+			_.xE(g.txt,"click",iS.bind(this,g)); if(g.ke) _.xE(g.ke,"click",iS.bind(this,g));
 		}
 		m=_.xT(c.v);
 		if(!c.x&&(m=="A"||m=="H")) { c.x=[]; for(i in c.v) c.x.push({ v:c.v[i],k:i }); c.v=(m=="A"?[]:{}); }
@@ -85,10 +84,10 @@ _.CTRL.TRE=function(f,p) {
 		if(!b.hd) c=1; var t=[_.xT(a.hd.val),_.xT(c?b.val:b.hd.val)],w;
 		if(c&&t[1]!=="A"&&t[1]!=="H") return 2;
 		if(t[0]=="A") iB(a); else if(!d&&t[1]=="H"&&iA(c?b:b.hd,a.key)) return 3;
-		if(c) if(!b.bs) iD(b,1); w=a.hd; a.hd=(c?b:b.hd); 
-		if(t[1]=="A") { a.key=c?b.bs.children.length:b.key; if(!c) iB(b,1); }
-		else iC(a,t[0]=="A"?_.aS():a.key,d);
+		if(c) if(!b.bs) iD(b,1); w=a.hd; a.hd=(c?b:b.hd);
 		if(c) b.bs.appendChild(a); else b.hd.bs.insertBefore(a,b);
+		if(t[1]=="A") if(c) a.key=b.bs.children.length; else iB(b,1);
+		else iC(a,t[0]=="A"?_.aS():a.key,d);
 		if(!w.bs.children.length) iD(w); if(f.form) f.form.NS();
 	}
 	f.Del=function(o,c) {
@@ -130,9 +129,9 @@ _.CTRL.TRE=function(f,p) {
 		return o.val;
 	}
 	function iS(o) {
-		if(f.xs) return;
-		if(f.Sel) { _.xW(f.Sel,"sel"); if(o&&f.CMP(f.Sel,o)) o=f.Sel=null; }
-		if(!o||o.xs) return; f.Sel=o; _.xW(o,"sel",1); if(p.chng) p.chng(f);
+		if(!o||o.xs||f.xs) return;
+		if(f.Sel) { _.xW(f.Sel,"sel"); if(f.CMP(f.Sel,o)) o=null; }
+		f.Sel=o; if(o) { _.xW(o,"sel",1); if(p.chng) p.chng(f); }
 	}
 }
 _.RQ--; })();

@@ -21,16 +21,20 @@ N:function(v) {
 	return v;
 }};
 _.CTRL.NUM=function(f,p) {
-	var u,g=f.fld=_.xM("input",0,f,[p.lbl?p.w:"100%"],"TXT FLD"),a=["stp","min","max","fix","mrk","mod"],i;
-	f.className="CON"; _.xW(g,0,{ type:"text" }); _.xC(g,{ flex:(p.w?"initial":"auto") });
-	if(p.lbl) { f.lbl=_.xM("div",0,f,0,{ flex:(p.d&&!p.w?"initial":"auto") },g); f.lbl.innerHTML=p.lbl; }
+	f.lbl=_.xM("div",0,f); f.lbl.innerHTML=p.lbl||"";
+	var u,g=f.fld=_.xM("input",0,f,0,"TXT FLD"),a=["w","stp","min","max","fix","mrk","mod"],i;
+	f.classList.add("CON"); _.xW(g,0,{ type:"text" });
+	_.xB(f,"w",0,function(v){
+		var b=["initial","auto"];
+		_.xS(f.fld,v||"unset"); f.lbl.style.flex=b[v?1:0]; f.fld.style.flex=b[v?0:1];
+	});
 	f.Val=function(v,w) {
 		var t=_.xT(v); if(!t) return w=="V"?f.val:_.Num.T(f.val,f.stp,f.min,f.max);
 		v=_.Num.N(v); f.val=v; v=_.Num.T(v,f.stp,f.min,f.max);
 		if(f._m=="C"||f._m=="S") v=_.Num.S(v,f.fix,f._m=="C"?p.mrk:u);
 		else if(f._m=="M") v=_.Num.M(v); // style='unit' yet not 100% supported
 		else if(f._m=="B") v=v.toLocaleString(_.Lang,_.Num.F({ style:'percent' },f.fix));
-		f.fld.value=v+(!f._m=="C"&&f.mrk?" "+f.mrk:""); if(f.form) f.form.NS(); if(p.chng) p.chng(f);
+		f.fld.value=v+(!f._m=="C"&&f.mrk?" "+f.mrk:""); if(f.form) f.form.NS(); if(p.chng) p.chng(f,v);
 	}
 	_.xE(g,"focus",function() { if(f.rdo) this.blur(); else this.value=f.val; });
 	_.xE(g,"blur",function() { f.Val(this.value); });

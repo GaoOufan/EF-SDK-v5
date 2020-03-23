@@ -1,17 +1,15 @@
-(function(){ var _=EF;
-_.Use("acx/EFON");
+(function(){ var _=EF; _.Use("acx/EFON");
 _.CTRL.FLU=function(f,p) {
-	f.className="CON"; 
+	f.classList.add("CON"); 
 	var g,a={mul:"multiple",rdo:"readonly",ext:"accept"};
 	if(p.lbl) { f.lbl=_.xM("div",0,f,0,{flex:"auto"}); f.lbl.innerText=p.lbl; }
 	f.flu=g=_.xM("input",0,f,[p.w],{flex:"initial"}); g.type="file"; g.className="PNT"; 
 	g.ondrop=function(e) {
-		if(f.rdo) return;
-		e.preventDefault(); g.files=e.dataTransfer.files;
-		if(p.run) g.Blob({ p:p.run.p,onl:p.run.f,go:p.run.go });
+		if(f.rdo) return; e.preventDefault(); e.stopPropagation();
+		g.files=e.dataTransfer.files; if(g.files.length) f.ftp={}; iA(0);
 	}
 	g.ondragover=function(e) { if(f.rdo) return; e.preventDefault(); }
-	for(var i in a) { _.xB(f,i,_.xW.bind(this,g,a[i],"~"),_.xW.bind(this,g,a[i])); f[i]=p[i]; }
+	for(var i in a) { _.xB(f,i,_.xW.bind(null,g,a[i],"~"),_.xW.bind(null,g,a[i])); f[i]=p[i]; }
 	
 	f.Res=function(d) { return atob(d.substr(d.indexOf('base64,')+7)); }
 	f.EFON=function(k) { return _.ON(_.a6.D(f.ftp[k].substr(f.ftp[k].indexOf('base64,')+7)),'-'); }
@@ -20,7 +18,7 @@ _.CTRL.FLU=function(f,p) {
 	
 	function iA(i) {
 		var s=g.files[i].name,q=f.ftp[s]=new FileReader();
-		q.onloadstart=p.go; q.onerror=iA.bind(this,i);
+		q.onloadstart=p.go; q.onerror=iA.bind(null,i);
 		q.onload=function() {
 			f.ftp[s]=q.result; if(p.dec&&!p.bin) f.ftp[s]=f.Res(f.ftp[s]); if(p.dec=="E") f.ftp[s]=_.ON(f.ftp[s],'-');
 			if(i<g.files.length-1) iA(i+1);
