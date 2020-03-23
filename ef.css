@@ -24,21 +24,14 @@ hr{
 	border-width:8px; border-style:solid;
 	border-color:transparent #f00 transparent transparent;
 }
-
-[ctrl="SBT"]{
-	width:2em; height:2em; padding:0.5em; font-weight:bold; 
-	color:#000; border:2px outset #fff7; border-radius:50%;
-	background:#fff4; padding:2px; margin:2px 2px 2px 0; cursor:pointer;
-}
-[ctrl="SBT"]:not([rdo]):hover{ border:2px outset #0008; background:#0004; color:#fff; }
-
 .FLD::selection, .FLD::-moz-selection, .COD::selection, .COD::-moz-selection{ background:#fc0; color:#ff0; }
 .FLD::placeholder, .FLD::-webkit-input-placeholder{ color:#aaa; }
 .FLD:focus{ outline:none; border:2px inset #f807; }
-[ctrl][req] > .FLD::after{ content:'*'; color:#f40; }
+[ctrl][req] > div:nth-of-type(1)::before{ content:'Q'; font-family:"EF-SDK"; color:#f40; }
+.TXT:not(:valid){ outline:#f40; color:#f40; }
 .FLD{ background:#fff; color:#000; border:2px inset #ccc7; }
 [ctrl]:not([rdo]) > .FLD:hover{ border:2px inset #fc08; }
-[ctrl][rdo] > .TXT{ background:#fdb; color:#f80; }
+[ctrl][rdo] > .TXT{ background:#fdb; color:#840; }
 
 .TRK{ background-image:linear-gradient(#666,#ccc,#666); }
 .TRK > div{ background-image:linear-gradient(#fc8,#fff,#fc8); color:#840; }
@@ -68,6 +61,12 @@ form[err] > .FRT{ background-image:linear-gradient(#800,#f00,#800); color:#ff0; 
 .RBN li > div:hover{ background:#fff; color:#f80; }
 .RBN li[err]{ background:#f00; color:#ff0; }
 
+[ctrl="SBT"]{
+	width:2em; height:2em; padding:0.5em; font-weight:bold; 
+	color:#000; border:2px outset #fff7; border-radius:50%;
+	background:#fff4; padding:2px; margin:2px 2px 2px 0; cursor:pointer;
+}
+[ctrl="SBT"]:not([rdo]):hover{ border:2px outset #0008; background:#0004; color:#fff; }
 [ctrl="BTN"]{
 	background-color:#fc0; color:#840; border-radius:16px;
 	padding:4px 4px 88px 4px; font-weight:bold; box-sizing:border-box;
@@ -77,7 +76,7 @@ form[err] > .FRT{ background-image:linear-gradient(#800,#f00,#800); color:#ff0; 
 }
 [ctrl="BTN"]:not([rdo]){ transition:border 1s; }
 form[err] > [ctrl="BTN"]{ background-color:#fcc; color:#f00; }
-[ctrl="BTN"][rdo]{ background-color:#ccc; color:#aaa; border-color:#ccc; }
+[ctrl="BTN"][rdo]{ filter:grayscale(); }
 [ctrl="BTN"]:not([rdo]):hover{ border:2px outset #fff7; }
 form[err] > [ctrl="BTN"][n="V"]{ background-image:url("img/B_OK.png"); }
 form[err] > [ctrl="BTN"][n="X"]{ background-image:url("img/B_DEL.png"); }
