@@ -1,0 +1,52 @@
+<svg version="1.1" baseProfile="full" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .numbers{ font-size:10px; text-anchor:middle; dominant-baseline:middle; }
+    </style>
+    <defs>
+        <radialGradient id="Frame">
+            <stop offset="0%" stop-color="#fff"/>
+            <stop offset="85%" stop-color="#fff"/>
+            <stop offset="100%" stop-color="#f80"/>
+        </radialGradient>
+        <radialGradient id="Arrow" cy="25%">
+            <stop offset="0%" stop-color="#ccc"/>
+            <stop offset="100%" stop-color="#666"/>
+        </radialGradient>
+        <radialGradient id="SecArrow" cy="25%">
+            <stop offset="0%" stop-color="#fc8"/>
+            <stop offset="100%" stop-color="#f80"/>
+        </radialGradient>
+        <radialGradient id="Center">
+            <stop offset="0%" stop-color="#ff0"/>
+            <stop offset="100%" stop-color="#840"/>
+        </radialGradient>
+    </defs>
+    <circle cx="50" cy="50" r="50" fill="url('#Frame')"/>
+    <script>
+        var g=document.rootElement,o="",i,n=60,x,y,X;
+        while(n) {
+		    i=--n; x=Math.sin((i*Math.PI)/30); y=Math.cos((i*Math.PI)/30);
+		    o+="M"+(x*45+50)+","+(y*45+50)+"L"+(x*(i%5?40:35)+50)+","+(y*(i%5?40:35)+50);
+	    }
+	    X=document.createElementNS("http://www.w3.org/2000/svg","path"); X.setAttribute("d",o); 
+        X.setAttribute("fill","none"); X.setAttribute("stroke","#000"); document.rootElement.appendChild(X);
+        n=12; while(n) {
+            i=--n; X=document.createElementNS("http://www.w3.org/2000/svg","text");
+            X.setAttribute("x",Math.sin((i*Math.PI)/6)*30+50); X.setAttribute("y",Math.cos((i*Math.PI)/6)*30+50); 
+            X.setAttribute("fill","none"); X.setAttribute("stroke","#840"); X.setAttribute("class","numbers");
+            X.innerHTML=((17-i)%12)+1; document.rootElement.appendChild(X);
+        }
+    </script>
+    <path id="EF_Clock_0" d="M50,15L60,58 50,50 40,58z" style="transform-origin:center;" fill="url('#Arrow')"/>
+    <path id="EF_Clock_1" d="M50,25L60,58 50,50 40,58z" style="transform-origin:center;" fill="url('#Arrow')"/>
+    <path id="EF_Clock_2" d="M50,15L56,58 50,50 44,58z" style="transform-origin:center;" fill="url('#SecArrow')"/>
+    <circle cx="50" cy="50" r="8" fill="url('#Center')"/>
+    <script>
+        var clk=[],h,i=3; while(i) { clk.push(document.getElementById('EF_Clock_'+(3-i))); i--; }
+        window.setInterval(function(){
+		    h=new Date(); h=[h.getHours(),h.getMinutes(),h.getSeconds()];
+		    clk[1].style.transform='rotate('+((h[0]%12)*30+(h[1]/2))+'deg)';
+		    i=2; while(i) { clk[(2-i)*2].style.transform='rotate('+(h[3-i]*6)+'deg)'; i--; }
+	    },1000);
+    </script>
+</svg>
