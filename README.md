@@ -20,7 +20,8 @@ Development of online systems frontend and backend, convenient and fast, full of
 * Reduce development management and cost.
 
 What does EF contains:
-*** Controls ***
+
+Controls
 * Input controls
     * NUM - Numeric (int/float) with optional format
     * TXT - Textbox (inc. password/formatted)
@@ -29,7 +30,6 @@ What does EF contains:
     * FLU - File uploader (though can attach this functionality to every control using upk property)
     * IMG - Image picker box (also can serve for image display and more)
     * CPK - Color picker
-    
 * Selector controls
     * TRK - Trackbar
     * CMB - Drop down list / combo box
@@ -60,7 +60,7 @@ What does EF contains:
     * CHT - Chatting application (using socket connection)
     * IMG - Changing images box (currently done with IMG control using efc property)
     
-*** Accessories ***
+Accessories
     * FRM - Create form
     * TTP - Add tooltip (can be added to any control via ttp property)
     * DBX - Dialog box
@@ -76,14 +76,14 @@ What does EF contains:
     * BIN - Binary data manager.
     
 #########################################################################
-* EF is extensible
+EF is extensible
 Our system of extensions is safe, as extensions MUST pass EF-SDK security stamp to enter EF-SDK extensions library, preventing from duplications and code incompatibilities to happen, and will be tagged for easy search.
 
-*** Future development ***
-* WS - Websocket manager (upgrade from EF v4)
-* MID - Possibility to create/edit MIDI files
-* ZIP - Possibility to ZIP/Unzip content (frontend and backend)
-* EXL - Possibility to create/edit excel worksheet
-* TAR + full word processing algorithms (including the possibility to load .doc/.docx/*.rtf files)
-* Add Artificial Intelligence power
-* Backend development section with server management control panel developed in Python
+Future development
+     * WS - Websocket manager (upgrade from EF v4)
+     * MID - Possibility to create/edit MIDI files
+     * ZIP - Possibility to ZIP/Unzip content (frontend and backend)
+     * EXL - Possibility to create/edit excel worksheet
+     * TAR + full word processing algorithms (including the possibility to load .doc/.docx/*.rtf files)
+     * Add Artificial Intelligence power
+     * Backend development section with server management control panel developed in Python
