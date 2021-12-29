@@ -20,6 +20,7 @@ Development of online systems frontend and backend, convenient and fast, full of
 * No inner calls to 3rd party services (like google/microsoft/etc) good for data safety and excellent for https.
 * Write less, do more.
 * Reduce development management and cost.
+* For more information, please visit www.efsdk.com yet more help in www.efsdk.com/help- 
 
 What does EF contains:
 
