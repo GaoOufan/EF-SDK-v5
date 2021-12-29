@@ -9,9 +9,11 @@
    About eForms SDK
 ======================
 Development of online systems frontend and backend, convenient and fast, full of accessories:
-* Convenient develop Single Page Applications and systems.
+* Convenient develop Single Page Applications and whole systems.
 * EF supply all needed tools for everything you want to do.
-* EF is a single JS light weight file (&lt;200k original size, &lt;100k when zipped)
+* EF is a very light JS package which does not require installation, nor special environment! (<200k original size, <100k when zipped)
+* We have built-in set of controls that can simply do ALL what you need!
+* Flexible styling and configuration without headache as it is very simple!
 * Responsive
 * Convenient to use on mobile devices
 * No dependenties
@@ -23,68 +25,59 @@ What does EF contains:
 
 * Controls
      * Input controls
-          * NUM - Numeric (int/float) with optional format
-          * TXT - Textbox (inc. password/formatted)
-          * TAR - Text area
-          * CAL - Date/Time picker (Currently under development)
-          * FLU - File uploader (though can attach this functionality to every control using upk property)
-          * IMG - Image picker box (also can serve for image display and more)
-          * CPK - Color picker
+          * $num - Numeric with optional format
+          * $txt - Textbox (inc. password/formatted)
+          * $tar - Text area (multiline textbox)
+          * $cal - Date/Time picker (Currently under development)
+          * $upl - File(s) uploader (though can attach this functionality to any other control just by using upl property)
+          * $img - Image picker box (also can serve for image display slideshow and more) - supports SVG!
+          * $cpk - Color picker (with HSL + optional alpha channel)
      * Selector controls
-          * TRK - Trackbar
-          * CMB - Drop down list / combo box
-          * CHK - Checkbox (can define a group of them)
-          * RDO - Radio buttons (Currently under development)
-          * SBS - Image-capable selectable buttons
-          * TBL - Table (Grid view with row selection mode: Single/multiple/none)
-          * TRE - Treeview
-          * IML - Image list (Currently under development)
+          * $trk - Trackbar
+          * $ddl - Drop down list with possibility to create more than just text in each "option".
+          * $chk - Checkbox (can define a group of them)
+          * $tgb - Toggleable buttons set (behaves like $chk) but looks different
+          * $sbs - Selectable button strip (behaves like radio buttons, but have more functionality)
+          * $tbl - Table (Grid view) with row/column selection mode
+          * $tre - Treeview with selectible node
      * Data controls
-          * TBL - Table (Currently under development)
-          * TRE - Treeview
+          * $tbl - Table (Grid view) with a lot of built-in functionality
+          * $tre - Treeview - with a lot of built-in management functionality
      * Interactive controls
-          * CPT - CAPTCHA (Will not use numbers/letters in the future, so currently still under development)
-          * MTR - Meter (Currently under development)
-          * PRG - Progress bar
-          * LBL - Label (though is implemented in every control using lbl property)
-          * CVS - Canvas (with MagicBrush functionality, which is a quick way to draw 2D/3D objects)
-          * BTN - Big button
-          * SBT - Strip button
-          * STR - Buttons strip (toolbox)
-          * TAB - Tab page container (Currently under development)
-          * SPL - Splitter container
-          * IFR - iFrame container
-          * BAR - Menubar (Currently under development)
-     * Online presentation controls (Currently under development)
-          * SAT - Customer satisfaction survey (with star selection)
-          * CHT - Chatting application (using socket connection)
-          * IMG - Changing images box (currently done with IMG control using efc property)
+          * $prg - Progress bar
+          * $div - Container which can serve as label or title
+          * $cvs - Canvas - with MagicBrush functionality, which is EF small library for a quick way to draw 2D/3D objects, also with SVG support
+          * $btn - Standard button with smart functionality and with optional image
+          * $sbt - Strip button
+          * $tab - Tab page container
+          * $spl - Splitter container
+          * $ifr - iFrame container with optional inner EF support
     
-* Accessories
-     * FRM - Create form
-     * TTP - Add tooltip (can be added to any control via ttp property)
-     * DBX - Dialog box
-     * RIB - Forms ribbon
-     * SM - Ajax query manager
-     * Use - Download manager
-     * GIF - Can create GIF animation
-     * TTF - Can create/edit TTF font file and embeed it to HTML/JS file. Can examine a good tool for TTF fomts at https://www.efsdk.com/ef5/tools/ttf .
-     * ICO - Can create ICO format icon
-     * PDF - Can create PDF file
-     * SVG - Canb create complicated SVG objects and use them in HTML/JS file.
-     * ON - ObjectNotation is like JSON, but using safe base 64 that is good for transmitting over the network. In the future there will be binary version of this.
-     * BIN - Binary data manager.
+* More components
+     * frm - Standard form
+     * dbx - Dialog box
+* More tools
+     * sm - Ajax query manager
+     * use - Resource download manager
+     * Bin - EF Binary data object: Can easily store ANY type of structure like JSON, but in special binary format (aka EFON)
     
 #########################################################################
 
 EF is extensible
 Our system of extensions is safe, as extensions MUST pass EF-SDK security stamp to enter EF-SDK extensions library, preventing from duplications and code incompatibilities to happen, and will be tagged for easy search.
 
-* Future development
-     * WS - Websocket manager (upgrade from EF v4)
+* Available extensions in the package:
+     * GIF - Create and manipulate GIF image
+     * PDF - Create and manipulate PDF files
+     * MB/2D - Magic brush 2D
+     * MB/SVG - SVG quick paint with $cvs and more
+
+* Near future development of extensions
+     * MB/3D - 3D drawing (can use the help of threejs if willing to do something more complex)
+     * WS - Websocket manager
      * MID - Possibility to create/edit MIDI files
      * ZIP - Possibility to ZIP/Unzip content (frontend and backend)
      * EXL - Possibility to create/edit excel worksheet
      * TAR + full word processing algorithms (including the possibility to load .doc/.docx/*.rtf files)
      * Add Artificial Intelligence power
-     * Backend development section with server management control panel developed in Python
+     * Backend development section with server management control panel developed in PERL/Python
